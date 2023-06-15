@@ -6,11 +6,14 @@
     <title>
         Student management system</>
     </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
     <link href ="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <body class="d-flex flex-column min-vh-100">
+    <body class="d-flex flex-column min-vh-100"> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Student Management System</a>
+            <div clas s="container-fluid">
+              <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-graduation-cap fa-ig"></i> Student Management System
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -18,10 +21,14 @@
                 <ul class="navbar-nav me-auto">
                 
                   <li class="nav-item">
-                    <a class="nav-link" href="#">All Students</a>
+                    <a class="nav-link" href="#"> 
+                      <i class="fa-solid fa-list fa-ig"></i>  All Students
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Add students</a>
+                    <a class="nav-link" href="#">
+                      <i class="fa-solid fa-user-plus fa-ig"></i>  Add students
+                    </a>
                   </li>
                  
                 </ul>
@@ -33,24 +40,61 @@
         <h3 class="m-4">All Students</h3>
         <div clas="row">
             <div class="col-12">
-                <div class="card bg-light ms-4 me-4 mb-4">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <h4 class="card-title">Light card title</h4>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              {% if students %}
+              <div class="card bg-light ms-4 me-4 mb-4">
+                <div class="card-header">
+                  <i class="fa-solid fa-list fa-ig"></i> Student Records
+                </div>
+                <div class="card-body">
+                  
+                  <p class="card-text">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Student Number</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Field of Study</th>
+                            <th scope="col">GPA</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                           {% for student in students %}
+                           <tr>
+                            <td>{{ student.student_number }}</td>
+                            <td>{{ student.first_name }}</td>
+                            <td>{{ student.last_name }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.field_of_study }}</td>
+                            <td>{{ student.gpa }}</td>
+                            <td>ACTIONS</td>
+                           </tr>
+
+                           {% endfor %}
+                        </tbody>
+                      </table>
                     </div>
-                  </div>   
+                  </p>
+                </div>
+              </div>
+              {% else %}
+                <h5 class="alert alert-primary ms-4 me-4">No Student Records</h5>
+              {% endif %}   
             </div>
         </div>
        </div>
        <footer class="mt-auto mb-4">
     <div class="text-center"> 
     <span>
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script>Mamun.
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Mamun.Rafi.Rayhan
     </span>
-</div > 
+    </div > 
     </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
-    </head>
+</head>
 </html>
+<!-- Rafi -->
